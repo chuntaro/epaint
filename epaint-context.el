@@ -55,7 +55,7 @@
     body)"
   (declare (indent 2))
   `(let ,(mapcar (lambda (entry)
-                   (if (assq entry (cl-struct-slot-info cl-struct-epaint-drawable))
+                   (if (assq entry (cl-struct-slot-info 'epaint-drawable))
                        (list entry `(,(intern (concat "epaint--" (symbol-name entry))) ,object))
                      (warn "epaint-with-drawable: Unknown slot-name: `%s'" entry)))
                  spec-list)
@@ -112,7 +112,7 @@
     body)"
   (declare (indent 2))
   `(let ,(mapcar (lambda (entry)
-                   (if (assq entry (cl-struct-slot-info cl-struct-epaint-gc))
+                   (if (assq entry (cl-struct-slot-info 'epaint-gc))
                        (list entry `(,(intern (concat "epaint-gc-" (symbol-name entry))) ,object))
                      (warn "epaint-with-gc: Unknown slot-name: `%s'" entry)))
                  spec-list)

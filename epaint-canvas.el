@@ -28,7 +28,11 @@
 
 ;;; Code:
 
-(defvar epaint-internal-format 'pbm)
+(eval-and-compile
+  (defvar epaint-internal-format 'pbm))
+
+(require (intern (concat "epaint-internal-format-"
+                         (symbol-name epaint-internal-format))))
 
 (require 'eieio)
 (require 'epaint-draw)

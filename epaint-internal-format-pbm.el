@@ -56,8 +56,9 @@
                         (number-to-string height)
                         "\n"
                         "255\n")))
-    (setf (epaint--bitmap drawable) (string-make-unibyte
-                                     (concat header (make-string (* width height 3) 255)))
+    (setf (epaint--bitmap drawable) (encode-coding-string
+                                     (concat header (make-string (* width height 3) 255))
+                                     'no-conversion)
           (epaint--offset drawable) (length header)
           (epaint--width drawable) width
           (epaint--height drawable) height)
